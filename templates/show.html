@@ -1,0 +1,108 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/booking.css'%}">
+
+    <!-- home section strats -->
+
+    <div class="container">
+        <form>
+            <h3 class="title">Appointment Details</h3>
+            <b>
+                <table class="table">
+                    <tr>
+                        <td>Name</td>
+                         <td class="rg">: {{show.customer_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email ID</td>
+                        <td class="rg">: {{show.email_ID}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                         <td class="rg">: {{show.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                         <td class="rg">: {{show.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                         <td class="rg">: {{show.city}}</td> 
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td class="rg">: {{show.state}}</td>
+                    </tr>
+                    <tr>
+                        <td>PIN Code</td>
+                         <td class="rg">: {{show.pin_code}}</td> 
+                    </tr>
+                    <tr>
+                        <td>Request Type</td>
+                         <td class="rg">: {{show.request_Type}}</td> 
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                         <td class="rg">: {{show.description}}</td> 
+                    </tr>
+
+                    {% if show.cdate.date <= show.date %} <tr>
+                        <td><b>Service Status</b></td>
+                        <td class="rg">: <b> pending...</b></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><b>Service Status</b></td>
+                            <td class="rg">: <b> done</b></td>
+                        </tr>
+                        {% endif %}
+                </table>
+            </b>
+            <button class="submit-btn"><a href="/appointment">close</a></button>
+        </form>
+
+    </div>
+
+
+    <!-- home section ends  -->
+
+
+    <script src="{% static 'js/scriptt.js'%}"></script>
+    <style>
+        .container form {
+            padding-left: 7rem;
+
+        }
+
+        .table {
+            font-size: 18px;
+            height: 150px;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .rg {
+            padding-left: 4rem;
+        }
+
+        .container form .submit-btn {
+            float: right;
+            width: 17%;
+        }
+
+        .container form .submit-btn a {
+            text-decoration: none;
+            color: aliceblue;
+        }
+
+        .container form .title {
+            font-size: 30px;
+        }
+    </style>
+{% endblock body %}

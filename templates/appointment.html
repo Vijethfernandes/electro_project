@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/appointment.css'%}">
+
+
+    
+    <h1>My Appointments</h1>
+    
+    <div class="space">
+        {% for i in form reversed %}
+        <div class="container">
+            <form>
+                <table>
+                    <tr>
+                        <td> <b> Request Type</b></td>
+                        <td class="rg">:   {{i.request_Type}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Name</b></td>
+                        <td class="rg">:  {{i.customer_name}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Phone Number</b></td>
+                        <td class="rg">:   {{i.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Appiontment Date</b></td>
+                        <td class="rg">:   {{i.date}}</td>
+                        {% if i.cdate.date <= i.date %}
+                        <tr><td><b>Service Status</b></td><td class="rg" style="color: red;">: <b id="pen"> pending...</b></td></tr>
+                        {% else %}
+                        <tr><td><b>Service Status</b></td><td class="rg" style="color: rgb(5, 201, 5); ">: <b> done</b></td></tr>
+                        {% endif %}
+                    </tr>
+                    <h3>{{i.cdate}}</h3>
+                </table>
+                {% if i.cdate.date <= i.date %}
+                <button id="del" class="bb"><b> <a href="{% url 'delete_items' i.id %}">Delete</a></b></button>
+                {% endif %}
+                <button class="bb2"><b> <a href="{% url 'show' i.id %}">View</a></b></button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+
+  
+
+  
+    <script src="{% static 'js/scriptt.js'%}"></script>
+{% endblock body %}

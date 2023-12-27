@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/booking.css'%}">
+
+    <!-- home section strats -->
+
+    <div class="container">
+        <form action="#" method="POST" onsubmit="book()">
+            {% csrf_token %}
+            <a href="/"><i class="fas fa-times" style="color: #000000; font-size:2rem; float:right;"></i></a>
+            <h3 class="title">REQUEST AN APPOINTMENT</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="inputBox">
+                         {{form.customer_name}}
+                    </div>
+                    <div class="inputBox">
+                         {{form.email_ID}}
+                    </div>
+                    <div class="inputBox">
+                         {{form.phone_number}}
+                    </div>
+                    <div class="inputBox">
+                         {{form.address}}
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            {{form.city}}
+                        </div>
+                        <div class="inputBox">
+                             {{form.state}}
+                        </div>
+                        <div class="inputBox">
+                            {{form.pin_code}}
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                         {{form.request_Type}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.description}}
+                    </div>
+
+                    <div class="flex">
+                        <div class="inputBox">
+                             {{form.date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="SUBMIT REQUEST" class="submit-btn"><br><br>
+        </form>
+
+    </div>
+
+
+    <!-- home section ends  -->
+
+
+    <script src="{% static 'js/scriptt.js'%}"></script>
+    <script>
+        function book() {
+            alert("Success! Your submission has been received. If you need immediate assistance, please contact us at 6364074063");
+        }
+
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Name';
+        form_fields[2].placeholder = 'Email ID';
+        form_fields[3].placeholder = 'Phone Number';
+        document.getElementById('id_address').placeholder = "Address";
+        form_fields[4].placeholder = 'City';
+        form_fields[5].placeholder = 'State';
+        form_fields[6].placeholder = 'PINCODE';
+       
+        document.getElementById('id_description').placeholder = "Description";
+        form_fields[7].placeholder = 'YYYY-MM-DD';
+
+    </script>
+
+{% endblock body %}
